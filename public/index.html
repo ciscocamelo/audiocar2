@@ -495,7 +495,8 @@
     .hero__kicker .dot { width: 6px; height: 6px; background: var(--brand); transform: rotate(45deg); box-shadow: 0 0 10px var(--brand); }
     .hero h1 {
       font-size: clamp(3rem, 10.5vw, 7.5rem);
-      line-height: .88;
+      /* .88 clipped the taller Portuguese diacritics (Â, Ó) in Barlow Condensed */
+      line-height: .95;
       letter-spacing: -.01em;
       margin-bottom: 28px;
     }
