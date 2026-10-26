@@ -1,0 +1,42 @@
+"""Generate the extra icon sizes browsers and OS integrations ask for."""
+from PIL import Image, ImageDraw
+import os
+
+IMG = "public/images"
+ASSETS = "assets/brand/logo-original.jpg"
+
+mark_path = os.path.join(IMG, "logo-mark.png")
+if not os.path.exists(mark_path):
+    raise SystemExit("logo-mark.png missing — run scripts/logo_build.txt first")
+
+mark = Image.open(mark_path).convert("RGBA")
+
+def square(img, size, pad_ratio=0.10):
+    w, h = img.size
+    side = int(max(w, h) * (1 + pad_ratio * 2))
+    canvas = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    canvas.paste(img, ((side - w) // 2, (side - h) // 2), img)
+    return canvas.resize((size, size), Image.LANCZOS)
+
+# Standard app icons
+square(mark, 180).save(os.path.join(IMG, "apple-touch-icon.png"), optimize=True)
+square(mark, 144).save(os.path.join(IMG, "icon-144.png"), optimize=True)
+square(mark, 96).save(os.path.join(IMG, "icon-96.png"), optimize=True)
+
+# Multi-resolution favicon.ico (legacy browsers, Windows shortcuts, RSS readers)
+ico_sizes = [(16, 16), (24, 24), (32, 32), (48, 48), (64, 64)]
+frames = [square(mark, s[0], 0.06) for s in ico_sizes]
+frames[0].save(
+    os.path.join("public", "favicon.ico"),
+    format="ICO",
+    sizes=ico_sizes,
+)
+
+# Solid-background tile for Windows/jumplist style shortcuts
+tile = Image.new("RGBA", (192, 192), (7, 8, 11, 255))
+glyph = square(mark, 150, 0.0)
+tile.paste(glyph, ((192 - 150) // 2, (192 - 150) // 2), glyph)
+tile.convert("RGB").save(os.path.join(IMG, "tile-192.png"), optimize=True)
+
+print("written:", [f for f in ("apple-touch-icon.png", "icon-144.png", "icon-96.png", "tile-192.png")])
+print("favicon.ico:", os.path.getsize("public/favicon.ico"), "bytes")

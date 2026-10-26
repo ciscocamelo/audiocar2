@@ -1,0 +1,20 @@
+/* EQUIPA */
+
+  Nome:      AUDIOCAR – Car Service
+  Papel:     Oficina automóvel e industrial
+  Local:     Rua de Talharezes nº 22, 4925-123 Santa Marta de Portuzelo
+             Viana do Castelo, Portugal
+  Contacto:  +351 961 174 508 (telefone e WhatsApp)
+  Horário:   Segunda a sexta 08:30–19:00 · Sábado 09:00–12:00 · Domingo encerrado
+
+/* SITE */
+
+  Desenvolvido e mantido: AUDIOCAR
+  Código-fonte: https://github.com/ciscocamelo/audiocar2
+  Tecnologia:   HTML, CSS e JavaScript sem build, alojado em Cloudflare Workers
+  Tipografia:   Barlow Condensed, Inter e JetBrains Mono (Google Fonts)
+
+/* NOTA */
+
+  Este site não usa cookies de rastreio nem publicidade.
+  Pedidos de orçamento são feitos diretamente por WhatsApp ou telefone.

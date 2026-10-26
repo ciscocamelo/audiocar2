@@ -14,14 +14,41 @@ Site estático (HTML + CSS + JavaScript puro, sem build) servido pela Cloudflare
 
 ```
 public/
-  index.html      # página única, CSS e JS inline
-  images/         # fotos optimizadas (jpg + webp) e assets da marca
-  _headers        # caching e cabeçalhos de segurança
-  robots.txt
-  sitemap.xml
-assets/brand/     # arte original da marca (não publicada)
-scripts/          # tooling de deploy, QA e capturas
+  index.html            # página única, CSS e JS inline
+  404.html              # página de erro personalizada
+  images/               # fotos optimizadas (jpg + webp), ícones e assets da marca
+  favicon.ico           # ícone multi-resolução (16–64 px)
+  site.webmanifest      # manifest PWA (ícones, tema, atalhos)
+  browserconfig.xml     # mosaicos do Windows / Edge
+  robots.txt            # indexação + referência ao sitemap e ao llms.txt
+  sitemap.xml           # sitemap com extensão de imagens
+  llms.txt              # resumo do site para modelos de linguagem
+  humans.txt            # créditos e contactos do site
+  .well-known/security.txt
+  _headers              # caching, tipos de conteúdo e cabeçalhos de segurança
+  _redirects            # canonicalização de /index.html, /home, /inicio
+assets/brand/           # arte original da marca (não publicada)
+scripts/                # tooling de deploy, QA e capturas
 ```
+
+### Ficheiros de configuração
+
+| Ficheiro | Para que serve |
+|---|---|
+| `_headers` | cache (`immutable` para imagens), `Content-Type` explícito, `nosniff`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy` |
+| `_redirects` | `/index.html`, `/home` e `/inicio` → `/` com 301 |
+| `wrangler.toml` | nome da Worker, `compatibility_date`, `html_handling`, `not_found_handling` |
+| `robots.txt` | permite tudo, aponta para o sitemap e para o `llms.txt` |
+| `sitemap.xml` | página única + imagens principais, para o Google Search Console |
+| `llms.txt` | resumo factual (serviços, contactos, horário) para ChatGPT/Claude/Perplexity |
+| `site.webmanifest` | instalação como app: ícones 192/512/maskable, tema `#07080B`, atalhos |
+| `browserconfig.xml` | mosaico do Windows e do Edge |
+| `favicon.ico` | favicon clássico (16, 24, 32, 48, 64 px) |
+| `404.html` | página de erro na identidade da marca |
+| `humans.txt` | créditos, contactos e nota de privacidade |
+| `.well-known/security.txt` | canal de reporte de segurança (RFC 9116) |
+| `llms.txt` link no `<head>` | `<link rel="alternate" type="text/markdown">` |
+
 
 ## Deploy
 
@@ -51,6 +78,8 @@ do script), sem depender do wrangler.
 node scripts/qa.js            # typos de classes CSS, ids duplicados, ficheiros em falta
 node scripts/interact.js      # FAQ, filtros, lightbox, drawer mobile, overflow
 node scripts/verify_live.js   # confirma o que está publicado
+node scripts/verify_config.js # todos os ficheiros de configuração, 301/404 e cabeçalhos
+node scripts/verify_head.js   # referências do <head> e ficheiros locais existem
 node scripts/shoot.js <url> <nome> [largura] [altura] [full|viewport]
 ```
 

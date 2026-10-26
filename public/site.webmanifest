@@ -1,0 +1,58 @@
+{
+  "name": "AUDIOCAR – Car Service",
+  "short_name": "AUDIOCAR",
+  "description": "Oficina automóvel e industrial em Santa Marta de Portuzelo, Viana do Castelo: mecânica geral, diagnóstico eletrónico, car audio, ar condicionado, grupos geradores e bobinagem.",
+  "lang": "pt-PT",
+  "dir": "ltr",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#07080B",
+  "theme_color": "#07080B",
+  "categories": ["automotive", "business", "utilities"],
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Serviços",
+      "short_name": "Serviços",
+      "url": "/#servicos"
+    },
+    {
+      "name": "Tabela de serviços",
+      "short_name": "Tabela",
+      "url": "/#tabela"
+    },
+    {
+      "name": "Contactos",
+      "short_name": "Contactos",
+      "url": "/#contactos"
+    }
+  ]
+}

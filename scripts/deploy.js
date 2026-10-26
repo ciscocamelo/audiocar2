@@ -46,7 +46,9 @@ function parseConfig() {
   const name = (toml.match(/^name\s*=\s*"([^"]+)"/m) || [])[1];
   const compat = (toml.match(/^compatibility_date\s*=\s*"([^"]+)"/m) || [])[1];
   const dir = (toml.match(/directory\s*=\s*"([^"]+)"/m) || [])[1] || './public';
-  return { name, compat, dir: path.resolve(ROOT, dir) };
+  const htmlHandling = (toml.match(/^html_handling\s*=\s*"([^"]+)"/m) || [])[1];
+  const notFoundHandling = (toml.match(/^not_found_handling\s*=\s*"([^"]+)"/m) || [])[1];
+  return { name, compat, dir: path.resolve(ROOT, dir), htmlHandling, notFoundHandling };
 }
 
 function walk(dir, base = dir, out = []) {
@@ -146,8 +148,11 @@ async function uploadBucket(token, sessionJwt, entries, dir) {
   const headersFile = path.join(cfg.dir, '_headers');
   const redirectsFile = path.join(cfg.dir, '_redirects');
   const assetConfig = {};
+  if (cfg.htmlHandling) assetConfig.html_handling = cfg.htmlHandling;
+  if (cfg.notFoundHandling) assetConfig.not_found_handling = cfg.notFoundHandling;
   if (fs.existsSync(headersFile)) assetConfig._headers = fs.readFileSync(headersFile, 'utf8');
   if (fs.existsSync(redirectsFile)) assetConfig._redirects = fs.readFileSync(redirectsFile, 'utf8');
+  console.log('asset config:', JSON.stringify({ ...assetConfig, _headers: assetConfig._headers ? '(inline)' : undefined, _redirects: assetConfig._redirects ? '(inline)' : undefined }));
 
   const metadata = {
     assets: { jwt: completionJwt, config: assetConfig },

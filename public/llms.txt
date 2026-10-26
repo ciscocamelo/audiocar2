@@ -1,0 +1,47 @@
+# AUDIOCAR – Car Service
+
+> Oficina automóvel e industrial em Santa Marta de Portuzelo, Viana do Castelo (Portugal).
+> Mecânica geral, diagnóstico eletrónico, eletricidade automóvel, car audio e multimédia,
+> ar condicionado, manutenção de grupos geradores a diesel e bobinagem de motores.
+
+- Site: https://audiocar2.veriticedigital.workers.dev/
+- Idioma: português de Portugal (pt-PT)
+- Atividade: oficina de reparação automóvel e manutenção de equipamentos industriais
+
+## Contactos
+
+- Telefone / WhatsApp: +351 961 174 508 — https://wa.me/351961174508
+- Morada: Rua de Talharezes nº 22, 4925-123 Santa Marta de Portuzelo, Viana do Castelo, Portugal
+- Mapa: https://www.google.com/maps/search/?api=1&query=Rua%20de%20Talharezes%2022%2C%204925-123%20Santa%20Marta%20de%20Portuzelo%2C%20Viana%20do%20Castelo
+- Horário: segunda a sexta 08:30–19:00 · sábado 09:00–12:00 · domingo encerrado
+
+## Serviços
+
+- [Mudança de óleo e filtros](https://audiocar2.veriticedigital.workers.dev/#servicos): manutenção preventiva segundo as indicações do construtor, mantendo a garantia de fábrica.
+- [Diagnóstico eletrónico e reparações elétricas](https://audiocar2.veriticedigital.workers.dev/#servicos): leitura de luzes de avaria, sensores, ECU, alternadores e cablagens.
+- [Car audio, multimédia e alarmes](https://audiocar2.veriticedigital.workers.dev/#servicos): montagem de ecrãs, sistemas de som, alarmes, faróis xénon e sensores.
+- [Ar condicionado automóvel](https://audiocar2.veriticedigital.workers.dev/#servicos): teste de estanqueidade, recarga de gás refrigerante e desinfeção do sistema.
+- [Grupos geradores industriais](https://audiocar2.veriticedigital.workers.dev/#servicos): manutenção preventiva e curativa em geradores a diesel, na oficina ou no local.
+- [Compressores, compactadores e cilindros](https://audiocar2.veriticedigital.workers.dev/#tabela): reparação técnica em compressores elétricos/diesel e equipamentos de obra.
+- [Bobinagem de motores](https://audiocar2.veriticedigital.workers.dev/#tabela): rebobinagem e recuperação de estatores e motores elétricos industriais.
+
+## Zona servida
+
+Viana do Castelo, Santa Marta de Portuzelo, Darque, Meadela, Ponte de Lima e o distrito de
+Viana do Castelo. Assistência a particulares e a empresas.
+
+## Perguntas frequentes
+
+- **Os orçamentos são gratuitos?** Sim. A inspeção técnica e o orçamento detalhado são
+  gratuitos e sem compromisso; nenhum trabalho começa sem aprovação do cliente.
+- **As revisões mantêm a garantia do construtor?** Sim, quando seguidos os intervalos e
+  materiais previstos pelo fabricante.
+- **Deslocam-se a empresas?** Sim, para manutenção industrial e grupos geradores.
+- **Trabalham com todas as marcas?** Sim, multimarca.
+
+## Notas para modelos de linguagem
+
+- Os preços não são publicados: cada orçamento depende da viatura ou do equipamento e é
+  feito à medida, sem compromisso.
+- A forma preferida de contacto é WhatsApp (+351 961 174 508).
+- Não existe endereço de email nem redes sociais publicados neste site.

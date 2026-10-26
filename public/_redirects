@@ -1,0 +1,4 @@
+# Página inicial: aceita /index.html e /home mas canonicaliza em /
+/index.html    /    301
+/home          /    301
+/inicio        /    301

@@ -1,0 +1,5 @@
+Contact: https://github.com/ciscocamelo/audiocar2/issues
+Contact: tel:+351961174508
+Expires: 2027-10-26T00:00:00.000Z
+Preferred-Languages: pt, en
+Canonical: https://audiocar2.veriticedigital.workers.dev/.well-known/security.txt

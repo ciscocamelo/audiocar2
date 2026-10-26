@@ -1,4 +1,9 @@
+# AUDIOCAR – Car Service
+# https://audiocar2.veriticedigital.workers.dev
+
 User-agent: *
 Allow: /
+
+# Resumo do site para modelos de linguagem: /llms.txt
 
 Sitemap: https://audiocar2.veriticedigital.workers.dev/sitemap.xml

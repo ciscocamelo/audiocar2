@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página não encontrada | AUDIOCAR – Car Service</title>
+  <meta name="description" content="A página que procura não existe. Volte ao site da AUDIOCAR – Car Service, oficina em Santa Marta de Portuzelo, Viana do Castelo.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#07080B">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080B;
+      --text: #F3F4F6;
+      --muted: #9BA1AC;
+      --brand: #E8342B;
+      --line: rgba(255, 255, 255, .08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+      background:
+        radial-gradient(900px 420px at 18% 0%, rgba(232, 52, 43, .16), transparent 65%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      width: 100%;
+      max-width: 640px;
+      border-top: 1px solid var(--line);
+      padding-top: 40px;
+    }
+    .mark { display: flex; align-items: center; gap: 14px; margin-bottom: 40px; }
+    .mark img { width: 44px; height: auto; filter: drop-shadow(0 0 14px rgba(232, 52, 43, .45)); }
+    .mark span {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .code {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin: 0 0 18px;
+    }
+    h1 {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: .95;
+      font-size: clamp(2.6rem, 9vw, 4.6rem);
+      margin: 0 0 20px;
+    }
+    p { color: var(--muted); font-size: 1.02rem; line-height: 1.65; margin: 0 0 36px; max-width: 46ch; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    a.btn:hover, a.btn:focus-visible { transform: translateY(-2px); }
+    .primary { background: var(--brand); color: #fff; box-shadow: 0 12px 30px rgba(232, 52, 43, .35); }
+    .primary:hover { box-shadow: 0 16px 40px rgba(232, 52, 43, .5); }
+    .ghost { border: 1px solid var(--line); color: var(--text); }
+    .ghost:hover { border-color: var(--brand); }
+    .foot {
+      margin-top: 48px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #6B7280;
+    }
+    :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mark">
+      <img src="/images/logo-mark.png" alt="AUDIOCAR – Car Service" width="44" height="45">
+      <span>Audiocar</span>
+    </div>
+
+    <p class="code">Erro 404</p>
+    <h1>Esta página
+      não existe.</h1>
+    <p>
+      O endereço pode estar incompleto ou o conteúdo foi movido. Toda a informação
+      da AUDIOCAR está na página inicial — serviços, orçamentos e contactos.
+    </p>
+
+    <div class="actions">
+      <a class="btn primary" href="/">Voltar ao início</a>
+      <a class="btn ghost" href="https://wa.me/351961174508?text=Ol%C3%A1%20AUDIOCAR!%20Gostaria%20de%20pedir%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a>
+      <a class="btn ghost" href="tel:+351961174508">+351 961 174 508</a>
+    </div>
+
+    <p class="foot">Rua de Talharezes nº 22 · Santa Marta de Portuzelo · Viana do Castelo</p>
+  </main>
+</body>
+</html>
