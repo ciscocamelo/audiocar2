@@ -1,0 +1,15 @@
+"""Downscale oversized screenshots so they can be reviewed."""
+import sys
+from PIL import Image
+import os
+
+src = sys.argv[1]
+out = sys.argv[2] if len(sys.argv) > 2 else src.replace(".png", "_small.png")
+max_h = 8000
+im = Image.open(src)
+w, h = im.size
+scale = min(1.0, max_h / h, 900 / w)
+if scale < 1.0:
+    im = im.resize((max(1, round(w * scale)), max(1, round(h * scale))), Image.LANCZOS)
+im.save(out, optimize=True)
+print(out, im.size)

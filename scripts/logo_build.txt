@@ -1,0 +1,74 @@
+"""Build clean logo assets from the original AUDIOCAR JPEG (red on black)."""
+from PIL import Image
+import numpy as np
+import os
+
+SRC = "assets/brand/logo-original.jpg"
+OUT = "public/images"
+
+im = Image.open(SRC).convert("RGB")
+arr = np.asarray(im).astype(np.float32)
+r, g, b = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2]
+m = np.maximum(np.maximum(r, g), b)
+
+alpha = np.clip(m / 255.0, 0, 1)
+safe = np.where(m > 0, m, 1.0)
+rgb = np.clip(arr / safe[:, :, None] * 255.0, 0, 255)
+rgba = np.dstack([rgb, alpha * 255.0]).astype(np.uint8)
+rgba[alpha < 0.045] = [0, 0, 0, 0]
+logo = Image.fromarray(rgba, "RGBA")
+
+row_ink = (alpha > 0.06).sum(axis=1)
+rows = np.where(row_ink > 2)[0]
+segments, start, prev = [], rows[0], rows[0]
+for y in rows[1:]:
+    if y - prev > 8:
+        segments.append((start, prev))
+        start = y
+    prev = y
+segments.append((start, prev))
+segments = [s for s in segments if s[1] - s[0] > 8]
+print("row segments:", segments)
+
+os.makedirs(OUT, exist_ok=True)
+
+
+def crop_rows(top, bottom, pad=4):
+    a, b = max(0, top - pad), min(rgba.shape[0], bottom + pad)
+    sub = logo.crop((0, a, rgba.shape[1], b))
+    bb = sub.getbbox()
+    return sub.crop(bb) if bb else sub
+
+
+if len(segments) >= 3:
+    mark = crop_rows(*segments[0])
+    word = crop_rows(*segments[1])
+    tag = crop_rows(*segments[2]) if len(segments) > 2 else None
+else:
+    mark = crop_rows(segments[0][0], segments[-1][1])
+    word = tag = None
+
+mark.save(os.path.join(OUT, "logo-mark.png"), optimize=True)
+print("mark:", mark.size)
+full = logo.crop(logo.getbbox())
+full.save(os.path.join(OUT, "logo-full.png"), optimize=True)
+print("full:", full.size)
+if word is not None:
+    word.save(os.path.join(OUT, "logo-word.png"), optimize=True)
+    print("word:", word.size)
+if tag is not None:
+    tag.save(os.path.join(OUT, "logo-tagline.png"), optimize=True)
+    print("tagline:", tag.size)
+
+
+def square_icon(img, size, pad_ratio=0.10):
+    w, h = img.size
+    side = int(max(w, h) * (1 + pad_ratio * 2))
+    canvas = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    canvas.paste(img, ((side - w) // 2, (side - h) // 2), img)
+    return canvas.resize((size, size), Image.LANCZOS)
+
+
+for s in (512, 192, 64):
+    square_icon(mark, s).save(os.path.join(OUT, f"icon-{s}.png"), optimize=True)
+print("icons written")

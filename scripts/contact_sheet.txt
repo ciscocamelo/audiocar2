@@ -1,0 +1,22 @@
+"""Labeled contact sheet of the 7 gallery photos."""
+from PIL import Image, ImageDraw
+import os
+
+D = "public/images"
+files = [f"img-{i}.jpg" for i in range(1, 8)]
+TW, TH = 300, 200
+cols, rows = 4, 2
+pad, label_h = 10, 22
+sheet = Image.new("RGB", (cols * (TW + pad) + pad, rows * (TH + label_h + pad) + pad), (18, 20, 24))
+draw = ImageDraw.Draw(sheet)
+for i, f in enumerate(files):
+    im = Image.open(os.path.join(D, f)).convert("RGB")
+    im.thumbnail((TW, TH))
+    cx = pad + (i % cols) * (TW + pad)
+    cy = pad + (i // cols) * (TH + label_h + pad)
+    x = cx + (TW - im.width) // 2
+    y = cy + (TH - im.height) // 2
+    sheet.paste(im, (x, y))
+    draw.text((cx + 2, cy + TH + 4), f, fill=(255, 90, 80))
+sheet.save(os.path.join(D, "_contact_sheet.jpg"), quality=86)
+print("sheet", sheet.size)

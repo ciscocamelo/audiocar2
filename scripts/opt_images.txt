@@ -1,0 +1,29 @@
+"""Optimise the gallery photos: cap width, strip metadata, emit JPEG + WebP."""
+from PIL import Image, ImageOps
+import os
+
+D = "public/images"
+MAX_W = 1600
+QUALITY = 82
+
+total_before = total_after = 0
+for name in sorted(os.listdir(D)):
+    if not name.lower().endswith((".jpg", ".jpeg")):
+        continue
+    if name.startswith("_") or name in ("logo.jpg",):
+        continue
+    p = os.path.join(D, name)
+    before = os.path.getsize(p)
+    total_before += before
+    im = Image.open(p)
+    im = ImageOps.exif_transpose(im).convert("RGB")
+    if im.width > MAX_W:
+        im = im.resize((MAX_W, round(im.height * MAX_W / im.width)), Image.LANCZOS)
+    im.save(p, "JPEG", quality=QUALITY, optimize=True, progressive=True)
+    after = os.path.getsize(p)
+    total_after += after
+    wb = os.path.splitext(p)[0] + ".webp"
+    im.save(wb, "WEBP", quality=80, method=6)
+    print(f"{name:12} {before//1024:5}KB -> {after//1024:4}KB jpg | {os.path.getsize(wb)//1024:4}KB webp | {im.size}")
+
+print(f"TOTAL {total_before//1024}KB -> {total_after//1024}KB")

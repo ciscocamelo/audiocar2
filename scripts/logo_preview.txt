@@ -1,0 +1,29 @@
+"""Composite logo assets on dark/light backgrounds for visual QA."""
+from PIL import Image
+import os
+
+D = "public/images"
+names = ["logo-mark.png", "logo-full.png", "logo-word.png", "logo-tagline.png"]
+tiles = []
+for n in names:
+    p = os.path.join(D, n)
+    if os.path.exists(p):
+        tiles.append(Image.open(p).convert("RGBA"))
+
+pad = 24
+W = max(t.size[0] for t in tiles) + pad * 2
+H = sum(t.size[1] for t in tiles) + pad * (len(tiles) + 1)
+canvas = Image.new("RGB", (W, H), (11, 15, 25))
+y = pad
+for t in tiles:
+    canvas.paste(t, (pad, y), t)
+    y += t.size[1] + pad
+canvas.save(os.path.join(D, "_preview_dark.png"))
+
+light = Image.new("RGB", (W, H), (240, 242, 245))
+y = pad
+for t in tiles:
+    light.paste(t, (pad, y), t)
+    y += t.size[1] + pad
+light.save(os.path.join(D, "_preview_light.png"))
+print("previews written", canvas.size)

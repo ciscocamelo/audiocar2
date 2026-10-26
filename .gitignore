@@ -1,6 +1,13 @@
 # Node & Wrangler
 node_modules/
 .wrangler/
+.wrangler/
 .env
 *.log
 .DS_Store
+
+# Local tooling artefacts (never commit credentials or screenshots)
+scripts/.cf-token.json
+scripts/_shots/
+.cf-token.json
+.claude-flow/

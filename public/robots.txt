@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://audiocar2.veriticedigital.workers.dev/sitemap.xml

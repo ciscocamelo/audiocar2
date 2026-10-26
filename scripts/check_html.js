@@ -1,0 +1,13 @@
+const fs = require('fs');
+const s = fs.readFileSync('public/index.html', 'utf8');
+const lines = s.split('\n');
+console.log('lines:', lines.length, '| bytes:', s.length);
+console.log('closed html:', /<\/html>\s*$/.test(s));
+console.log('wa.me with number:', (s.match(/wa\.me\/351961174508/g) || []).length);
+console.log('bare wa.me:', /wa\.me\/\?/.test(s));
+console.log('logo refs:', [...new Set(s.match(/logo-[a-z]+\.png/g) || [])].join(','));
+console.log('images:', [...new Set(s.match(/img-[1-7]\.(jpg|webp)/g) || [])].join(','));
+console.log('sections:', [...s.matchAll(/id="([a-z-]+)"/g)].map((m) => m[1]).join(' '));
+console.log('phone tel links:', (s.match(/tel:\+351961174508/g) || []).length);
+console.log('jsonld:', /application\/ld\+json/.test(s));
+console.log('tail:', lines.slice(-6).join('\n'));

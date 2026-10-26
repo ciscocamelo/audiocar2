@@ -1,0 +1,26 @@
+"""Slice a tall full-page screenshot into readable vertical chunks."""
+import sys
+from PIL import Image
+
+src = sys.argv[1]
+prefix = sys.argv[2]
+parts = int(sys.argv[3]) if len(sys.argv) > 3 else 4
+target_w = 1100
+
+im = Image.open(src)
+w, h = im.size
+scale = min(1.0, target_w / w)
+if scale < 1.0:
+    im = im.resize((round(w * scale), round(h * scale)), Image.LANCZOS)
+w, h = im.size
+
+# split into `parts` chunks of roughly equal height, capped at 7800 px each
+chunk_h = min(7800, -(-h // parts))
+y = 0
+i = 0
+while y < h:
+    box = (0, y, w, min(h, y + chunk_h))
+    im.crop(box).save(f"{prefix}_{i + 1}.png", optimize=True)
+    print(f"{prefix}_{i + 1}.png", box[3] - box[1], "px")
+    y += chunk_h
+    i += 1

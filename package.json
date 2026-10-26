@@ -2,11 +2,9 @@
   "name": "audio-car-landing-page",
   "version": "1.0.0",
   "description": "Audio Car - Oficina Mecânica, Eletrónica Automóvel & Manutenção Industrial",
-  "main": "index.html",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "pages:deploy": "wrangler pages deploy . --project-name=audio-car"
+    "deploy": "wrangler deploy"
   },
   "keywords": [
     "audio-car",
